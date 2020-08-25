@@ -10,4 +10,15 @@ class TasksController < ApplicationController
   def new
     @task = Task.new
   end
+
+  def create
+    @task = Task.create(strong_params)
+    redirect_to task_path(@task.id)
+  end
+
+  private
+
+  def strong_params
+    params.require(:task).permit(:title, :details)
+  end
 end
