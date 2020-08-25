@@ -1,7 +1,1 @@
-<div class="m-3">
-  <%= simple_form_for @task do |form| %>
-      <%= form.input :title %>
-      <%= form.input :details %>
-      <%= form.submit %>
-    <% end %>
-</div>
+<%= render 'form', task: @task %>
