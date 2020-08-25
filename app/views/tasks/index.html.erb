@@ -1,9 +1,20 @@
+<div class="container">
 <h1>My tasks</h1>
 
+<div class='pl-3'>
 <% @tasks.each do |task| %>
-   <p><%= link_to task.title, task_path(task.id) %> <span> <%= task.completed ? '✔' : '✖' %> </span> </p>
+   <p>
+    <span> <%= task.completed ? tag.i(class: %w[fas fa-check-square]) : tag.i(class: %w[far fa-square]) %> </span>
+    <%= link_to task.title, task_path(task.id) %>
+    <span><%= link_to tag.i(class: %w[fas fa-trash]), task_path(task.id), method: :delete, class: 'btn btn-danger btn-sm', data: { confirm: "Do you really want to delete #{task.title}?" }%></span>
+  </p>
 <% end %>
-
+</div>
 <hr>
 
-<%= link_to 'Add a new task', new_task_path %>
+<%= link_to 'Add a new task', new_task_path, class: 'btn btn-primary' %>
+</div>
+
+
+
+<!-- <span> <%# tag.i(class: %w[fas fa-check-square]) if task.completed %> </span> -->
